@@ -6,10 +6,15 @@ import WordCloud from './d3-word-cloud';
 //Testing functional component
 import Input from './input_functional';
 
+
+
+
 export default class Todo extends Component {
   state = {
     todos: []
   }
+
+
 
   async componentDidMount() {
     await this.helper();

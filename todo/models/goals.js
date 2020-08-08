@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 //create schema for todo
 const GoalSchema = new Schema({
-  task: {
+  tasks: {
     type: [Todo],
     required: [true, 'The todo text field is required']
   }

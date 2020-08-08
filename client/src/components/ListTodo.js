@@ -1,14 +1,11 @@
 import React from 'react';
-import { deleteTodo } from '../api/todo'
+import { selectTodos, completeTodo } from '../reducers/todo-slice'
+import { useDispatch, useSelector } from 'react-redux';
 
-const ListTodo = ({ todos, getTodos }) => {
+const ListTodo = () => {
 
-  const helper = async (id) => {
-    const success = await deleteTodo(id)
-    if (success) {
-      getTodos();
-    }
-  }
+  const dispatch = useDispatch()
+  const todos = useSelector(selectTodos)
 
   return (
     <ul>
@@ -18,7 +15,7 @@ const ListTodo = ({ todos, getTodos }) => {
           (
             todos.map(todo => {
               return (
-                <li key={todo._id} onClick={() => helper(todo._id)}>{todo.action}</li>
+                <li key={todo._id} onClick={() => dispatch(completeTodo(todo))}>{todo.action}</li>
               )
             })
           )
