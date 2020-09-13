@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { selectTodos } from '../reducers/todo-slice'
 
 const d3 = require('d3'),
   cloud = require('d3-cloud')
 
-export default class D3WordCluster extends Component {
+class D3WordCluster extends Component {
 
   buildCloud = () => {
     const freqs = this.props.todos.reduce((acc, task) => {
@@ -62,3 +64,8 @@ export default class D3WordCluster extends Component {
     return (<svg></svg>)
   }
 }
+
+const mapStateToProps = (state) => ({
+  todos: selectTodos(state)
+})
+export default connect(mapStateToProps)(D3WordCluster);

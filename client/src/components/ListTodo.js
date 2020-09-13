@@ -1,11 +1,10 @@
 import React from 'react';
 import { selectTodos, completeTodo } from '../reducers/todo-slice'
-import { useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
-const ListTodo = () => {
+const ListTodo = ({ todos }) => {
 
   const dispatch = useDispatch()
-  const todos = useSelector(selectTodos)
 
   return (
     <ul>
@@ -28,4 +27,7 @@ const ListTodo = () => {
   )
 }
 
-export default ListTodo;
+const mapStateToProps = (state) => ({
+  todos: selectTodos(state)
+})
+export default connect(mapStateToProps)(ListTodo);

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { addTodo } from '../api/todo';
+import { fetchTodos } from '../reducers/todo-slice';
 
 const Input = ({ getTodos }) => {
   const [action, setAction] = useState('')
@@ -19,4 +21,9 @@ const Input = ({ getTodos }) => {
     </div>
   )
 }
-export default Input
+
+const mapDispatchToProps = dispatch => ({
+  getTodos: () => { fetchTodos()(dispatch) }
+})
+
+export default connect(null, mapDispatchToProps)(Input);

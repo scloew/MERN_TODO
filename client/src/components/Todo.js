@@ -35,7 +35,7 @@ export default class Todo extends Component {
       <div>
         <h1>My Todo(s)</h1>
         <Input getTodos={this.helper} />
-        <ListTodo todos={todos} getTodos={this.helper} />
+        <ListTodo getTodos={this.helper} />
         <WordCloud todos={todos} />
       </div>
     )
